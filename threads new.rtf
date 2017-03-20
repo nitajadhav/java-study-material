@@ -1,0 +1,386 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Courier New;}}
+{\colortbl ;\red255\green255\blue0;}
+{\*\generator Riched20 10.0.14393}\viewkind4\uc1 
+\pard\f0\fs22\lang1033 Question 1\par
+Given:\par
+1. public class Threads3 implements Runnable \{\par
+2. public void run() \{\par
+3. System.out.print(\rdblquote running\rdblquote );\par
+4. \}\par
+5. public static void main(String[] args) \{\par
+6. Thread t = new Thread(new Threads3());\par
+7. t.run();\par
+8. t.run();\par
+9. t.start();\par
+10. \}\par
+11. \}\par
+What is the result?\par
+A. Compilation fails.\par
+B. An exception is thrown at runtime.\par
+C. The code executes and prints \ldblquote running\rdblquote .\par
+D. The code executes and prints \ldblquote runningrunning\rdblquote .\par
+E\highlight1 . The code executes and prints \b\ldblquote runningrunningrunning\highlight0\rdblquote .\b0\par
+\par
+\par
+Question 2\par
+Which two code fragments will execute the method doStuff() in a\par
+separate thread? (Choose two.)\par
+A. \highlight1 new Thread() \{\par
+public void run() \{ doStuff(); \}\par
+\}\par
+\highlight0 B. new Thread() \{\par
+public void start() \{ doStuff(); \}\par
+\}\par
+C. new Thread() \{\par
+public void start() \{ doStuff(); \}\par
+\} .run();\par
+D. \highlight1 new Thread() \{\par
+public void run() \{ doStuff(); \}\par
+\} .start();\par
+\highlight0 E. new Thread(new Runnable() \{\par
+public void run() \{ doStuff(); \}\par
+\} ).run();\par
+F. \highlight1 new Thread(new Runnable() \{\par
+public void run() \{ doStuff(); \}\par
+\}).start();\par
+\par
+\highlight0 Question 3\par
+Given:\par
+1. public class Threads4 \{\par
+2. public static void main (String[] args) \{\par
+3. new Threads4().go();\par
+4. \}\par
+5. public void go() \{\par
+6. Runnable r = new Runnable() \{\par
+7. public void run() \{\par
+8. System.out.print(\rdblquote foo\rdblquote );\par
+9. \}\par
+10. \};\par
+11. Thread t = new Thread(r);\par
+12. t.start();\par
+13. t.start();\par
+14. \}\par
+15. \}\par
+What is the result?\par
+A. Compilation fails.\par
+B. \highlight1 An exception is thrown at runtime.  Illegel thread state exception\par
+\highlight0 C. The code executes normally and prints \lquote foo\rdblquote .\par
+D. The code executes normally, but nothing is printed.\par
+\par
+Question 4\par
+Given:\par
+1. public class Threads5 \{\par
+2. public static void main (String[] args) \{\par
+3. new Thread(new Runnable() \{\par
+4. public void run() \{\par
+5. System.out.print(\rdblquote bar\rdblquote );\par
+6. \}\}).start();\par
+7. \}\par
+8. \}\par
+What is the result?\par
+A. Compilation fails.\par
+B. An exception is thrown at runtime.\par
+C. \highlight1 The code executes normally and prints \ldblquote bar\rdblquote .\par
+\highlight0 D. The code executes normally, but nothing prints.\par
+\par
+Question 5\par
+Given:\par
+11. Runnable r = new Runnable() \{\par
+12. public void run() \{\par
+13. System.out.print(\rdblquote Cat\rdblquote );\par
+14. \}\par
+15. \};\par
+16. Threadt=new Thread(r) \{\par
+17. public void run() \{\par
+18. System.out.print(\rdblquote Dog\rdblquote );\par
+19. \}\par
+20. \};\par
+21. t.start();\par
+What is the result?\par
+A. Cat\par
+B. \highlight1 Dog\highlight0\par
+C. Compilation fails.\par
+D. The code runs with no output.\par
+E. An exception is thrown at runtime.\par
+\par
+Question 6\par
+Click the Exhibit button.\par
+Given:\par
+10. public class Starter extends Thread \{\par
+11. private int x= 2;\par
+12. public static void main(String[] args) throws Exception \{\par
+13. new Starter().makeItSo();\par
+14. \}\par
+15. public Starter() \{\par
+16. x=5;\par
+17. start();\par
+18. \}\par
+19. public void makeItSo() throws Exception \{\par
+20. join();\par
+21. x=x- 1;\par
+22. System.out.println(x);\par
+23. \}\par
+24. public void run() \{ x *= 2; \}\par
+25. \}\par
+What is the output if the main() method is rum?\par
+A. 4\par
+B. 5\par
+C. 8\par
+
+\pard\highlight1 D. 9\highlight0\par
+
+\pard E. Compilation fails.\par
+F. An exception is thrown at runtime.\par
+G. It is impossible to determine for certain.\par
+\par
+Question 7\par
+Given:\par
+1. public class Threads2 implements Runnable \{\par
+2.\par
+3. public void run() \{\par
+4. System.out.println(\rdblquote run.\rdblquote );\par
+5. throw new RuntimeException(\rdblquote Problem\rdblquote );\par
+6. \}\par
+7. public static void main(String[] args) \{\par
+8. Thread t = new Thread(new Threads2());\par
+9. t.start();\par
+10. System.out.println(\rdblquote End of method.\rdblquote );\par
+11. \}\par
+12. \}\par
+Which two can be results? (Choose two.)\par
+A. java.lang.RuntimeException: Problem\par
+B. run.\par
+java.lang.RuntimeException: Problem\par
+C. End of method.\par
+java.lang.RuntimeException: Problem\par
+D. \highlight1 End of method.\par
+run.\par
+java.lang.RuntimeException: Problem\highlight0\par
+E. run.\par
+java.lang.RuntimeException: Problem\par
+End of method.\par
+\par
+\par
+Question 8\par
+Given:\par
+1. public class TestOne \{\par
+2. public static void main (String[] args) throws Exception \{\par
+3. Thread.sleep(3000);\par
+4. System.out.println(\rdblquote sleep\rdblquote );\par
+5. \}\par
+6. \}\par
+What is the result?\par
+A. Compilation fails.\par
+B. An exception is thrown at runtime.\par
+C\highlight1 . The code executes normally and prints \ldblquote sleep\rdblquote .\par
+\highlight0 D. The code executes normally, but nothing is printed.\par
+\par
+Question 9\par
+Given:\par
+1. public class TestOne implements Runnable \{\par
+2. public static void main (String[] args) throws Exception \{\par
+3. Thread t = new Thread(new TestOne());\par
+4. t.start();\par
+5. System.out.print(\rdblquote Started\rdblquote );\par
+6. t.join();\par
+7. System.out.print(\rdblquote Complete\rdblquote );\par
+8. \}\par
+9. public void run() \{\par
+10. for (int i= 0; i< 4; i++) \{\par
+11. System.out.print(i);\par
+12. \}\par
+13. \}\par
+14. \}\par
+What can be a result?\par
+A. Compilation fails.\par
+B. An exception is thrown at runtime.\par
+C. The code executes and prints \ldblquote StartedComplete\rdblquote .\par
+D. The code executes and prints \ldblquote StartedComplete0123\rdblquote .\par
+E. \highlight1 The code executes and prints \ldblquote Started0l23Complete\rdblquote .\highlight0\par
+\par
+Question 10\par
+\par
+Given:\par
+1. public class TwoThreads \{\par
+2\par
+3. private static Object resource = new Object();\par
+4.\par
+5. private static void delay(long n) \{\par
+6. try \{ Thread.sleep(n); \}\par
+7. catch (Exception e) \{ System.out.print(\rdblquote Error \ldblquote ); \}\par
+8. \}\par
+9\par
+10. public static void main(String[] args) \{\par
+11. System.out.print(\rdblquote StartMain \ldblquote );\par
+12. new Thread1().start();\par
+13. delay(1000);\par
+14. Thread t2 = new Thread2();\par
+15. t2.start();\par
+16. delay(1000);\par
+17. t2.interrupt\par
+18. delay(1000);\par
+19. System.out.print(\rdblquote EndMain \ldblquote );\par
+20. \}\par
+21.\par
+22. static class Thread 1 extends Thread \{\par
+23. public void run() \{\par
+24. synchronized (resource) \{\par
+25. System.out.print(\rdblquote Startl \ldblquote );\par
+26. delay(6000);\par
+27. System.out.print(\rdblquote End1 \ldblquote );\par
+28. \}\par
+29. \}\par
+30. \}\par
+31.\par
+32. static class Thread2 extends Thread \{\par
+33. public void run() \{\par
+34. synchronized (resource) \{\par
+35. System.out.print(\rdblquote Start2 \ldblquote );\par
+36. delay(2000);\par
+37. System.out.print(\rdblquote End2 \ldblquote );\par
+38. \}\par
+39. \}\par
+40. \}\par
+41. \}\par
+Assume that sleep(m) executes in exactly m milliseconds, and all other\par
+code executes in an insignificant amount of time. What is the output if\par
+the main() method is run?\par
+A. Compilation fails.\par
+B. Deadlock occurs.\par
+C. StartMain Start1 Error EndMain End1\par
+D. StartMain Start1 EndMain End1 Start2 End2\par
+E. StartMain Start1 Error Start2 EndMain End2 End1\par
+F. StartMain Start1 Start2 Error End2 EndMain End1\par
+G. StartMain Start1 EndMain End1 Start2 Error End2\par
+\par
+Question 11\par
+Given:\par
+public class NamedCounter \{\par
+private final String name;\par
+private int count;\par
+public NamedCounter(String name) \{ this.name = name; \}\par
+public String getName() \{ return name; \}\par
+public void increment() \{ coount++; \}\par
+public int getCount() \{ return count; \}\par
+public void reset() \{ count = 0; \}\par
+\}\par
+Which three changes should be made to adapt this class to be used\par
+safely by multiple threads? (Choose three.)\par
+A\highlight1 . declare reset() using the synchronized keyword\par
+B\highlight0 . declare getName() using the synchronized keyword\par
+C. declare getCount() using the synchronized keyword\par
+D. declare the constructor using the synchronized keyword\par
+E. \highlight1 declare increment() using the synchronized keyword\highlight0\par
+\par
+Question 12\par
+Click the Exhibit button:\par
+1. public class Threads 1 \{\par
+2. intx=0;\par
+3. public class Runner implements Runnable \{\par
+4. public void run() \{\par
+5. int current = 0;\par
+6. for(int=i=0;i<4;i++)\{\par
+7. current = x;\par
+8. System.out.print(current + \ldblquote , \ldblquote );\par
+9. x = current + 2;\par
+10. \}\par
+11. \}\par
+12. \}\par
+13.\par
+14. public static void main(String[] args) \{\par
+15. new Threads1().go();\par
+16. \}\par
+17.\par
+18. public void go() \{\par
+19. Runnable r1 = new Runner();\par
+20. new Thread(r1).start();\par
+21. new Thread(r1 ).start();\par
+22. \}\par
+23. \}\par
+Which two are possible results? (Choose two.)\par
+A. 0, 2, 4, 4, 6, 8, 10, 6,\par
+B. 0, 2, 4, 6, 8, 10, 2, 4,\par
+C. 0, 2, 4, 6, 8, 10, 12, 14,\par
+D. 0, 0, 2, 2, 4, 4, 6, 6, 8, 8, 10, 10, 12, 12, 14, 14,\par
+E. 0, 2, 4, 6, 8, 10, 12, 14, 0, 2, 4, 6, 8, 10, 12, 14,\par
+\par
+Question 13\par
+Click the Exhibit button.\par
+1. import java.util.*;\par
+2.\par
+3. public class NameList \{\par
+4. private List names = new ArrayList();\par
+5. public synchronized void add(String name) \{ names.add(name); \}\par
+6. public synchronized void printAll() \{\par
+7. for (int i = 0; i <names.size(); i++) \{\par
+8. System.out.print(names.get(i) +\ldblquote  \ldblquote );\par
+9. \}\par
+10. \}\par
+11. public static void main(String[] args) \{\par
+12. final NameList sl = new NameList();\par
+13.for(int i=0;i<2;i++) \{\par
+14. new Thread() \{\par
+15. public void ruin() \{\par
+16. sl.add(\rdblquote A\rdblquote );\par
+17. sl.add(\rdblquote B\rdblquote );\par
+18. sl.add(\rdblquote C\rdblquote );\par
+19. sl.printAll();\par
+20. \}\par
+21. \}.start();\par
+22. \}\par
+23. \}\par
+24. \}\par
+Which two statements are true if this class is compiled and run?\par
+(Choose two.)\par
+A. An exception may be thrown at runtime.\par
+B. The code may run with no output, without exiting.\par
+C. The code may run with no output, exiting normally.\par
+D. The code may rum with output \ldblquote A B A B C C \ldblquote , then exit.\par
+E. \highlight1 The code may rum with output \ldblquote A B C A B C A B C \ldblquote , then exit.\par
+\highlight0 F. The code may ruin with output \ldblquote A A A B C A B C C \ldblquote , then exit.\par
+G. The code may ruin with output \ldblquote A B C A A B C A B C \ldblquote , then exit.\par
+\par
+Question 14\par
+Given:\par
+1. public class TestFive \{\par
+2. private int x;\par
+3. public void foo() \{\par
+4 int current = x;\par
+5. x = current + 1;\par
+6. \}\par
+7. public void go() \{\par
+8. for(int i=0;i<5;i++) \{\par
+9. new Thread() \{\par
+10. public void run() \{\par
+11. foo();\par
+12. System.out.print(x + \ldblquote , \ldblquote );\par
+13. \} \}.start();\par
+14. \}\}\}\par
+Which two changes, taken together, would guarantee the output: 1, 2,\par
+3, 4, 5, ? (Choose two.)\par
+A. Move the line 12 print statement into the foo() method.\par
+B. Change line 7 to public synchronized void go() \{.\par
+C. Change the variable declaration on line 3 to private volatile int x;.\par
+D. Wrap the code inside the foo() method with a synchronized( this )\par
+block.\par
+E. Wrap the for loop code inside the go() method with a synchronized\par
+block synchronized(this) \{ // for loop code here \}.\par
+\par
+Question 15\par
+Which three will compile and run without exception? (Choose three.)\par
+A. private synchronized Object o;\par
+B. void go() \{\par
+synchronized() \{ /* code here */ \}\par
+\}\par
+C. public synchronized void go() \{ /* code here */ \}\par
+D. private synchronized(this) void go() \{ /* code here */ \}\par
+E. void go() \{\par
+synchronized(Object.class) \{ /* code here */ \}\par
+\}\par
+F. void go() \{\par
+Object o = new Object();\par
+synchronized(o) \{ /* code here */ \}\par
+\}\par
+\par
+}
+ 
