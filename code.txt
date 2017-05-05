@@ -1,0 +1,59 @@
+import java.util.ArrayList;
+
+import java.util.Collections;
+
+import java.util.List;
+
+ 
+
+public class solution3 {
+
+ 
+
+public int solution(int[] A){
+
+ 
+
+int sum=0;
+
+List sumsList=new ArrayList();
+
+ 
+
+for(int p=0; p<A.length;p++){
+
+for(int q=p+1;q<A.length;q++){
+
+ 
+
+ 
+
+for(int c=p;c<=q;c++){
+
+sum=sum+A[c];
+
+}
+
+sumsList.add(Math.abs(sum));
+
+sum=0;
+
+}
+
+}
+
+ 
+
+System.out.println(sumsList);
+
+Collections.sort(sumsList);
+
+System.out.println(sumsList);
+
+ 
+
+return (int) sumsList.get(0);
+
+}
+
+}
