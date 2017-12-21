@@ -1,0 +1,45 @@
+create or replace function fun(salary in number)
+return boolean
+is
+isavailabe boolean;
+total number;
+begin
+select count(*) into total from HR.EMPLOYEES where salary >15000;
+if total > 1 then
+  INSERT INTO MyEmployees
+  SELECT * 
+  FROM HR.EMPLOYEES WHERE  salary>15000;
+  delete from   MyEmployees where salary<5000;
+  isavailabe:=true;
+else
+  isavailabe:= false;
+end if;
+return isavailabe;
+end;
+
+
+
+DECLARE 
+   c boolean;
+BEGIN 
+   c := fun(15000);
+   if c = true then
+   
+    dbms_output.put_line( 'true');
+   else
+    dbms_output.put_line( 'false');
+    end if;
+END;
+
+
+
+
+
+DECLARE 
+   c number(4); 
+BEGIN 
+   c := fun(); 
+   dbms_output.put_line('Total no. of Customers: ' || c); 
+END;
+
+
